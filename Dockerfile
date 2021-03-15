@@ -56,4 +56,4 @@ COPY --chown=node packages/server /home/node/server
 # Init for containers https://github.com/krallin/tini
 ENTRYPOINT [ "/sbin/tini", "--" ]
 
-CMD /wait && node bin/www
+CMD node bin/www
