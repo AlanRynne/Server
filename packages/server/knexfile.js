@@ -35,6 +35,7 @@ if ( env.POSTGRES_USER && env.POSTGRES_PASSWORD ) {
 } else {
   connectionUri = env.POSTGRES_URL
 }
+connectionUri+='?sslmode=require'
 
 module.exports = {
   test: {
@@ -56,6 +57,8 @@ module.exports = {
     connection: connectionUri,
     migrations: {
       directory: migrationDirs
-    }
+    },
+    ssl: { rejectUnauthorized: false },
+
   }
 }
