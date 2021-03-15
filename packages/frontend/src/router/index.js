@@ -27,6 +27,22 @@ const routes = [
         component: () => import('../views/auth/Registration.vue')
       },
       {
+        path: 'resetpassword',
+        name: 'Reset Password',
+        meta: {
+          title: 'Register | Speckle'
+        },
+        component: () => import('../views/auth/ResetPasswordRequest.vue')
+      },
+      {
+        path: 'resetpassword/finalize',
+        name: 'Reset Password Finalization',
+        meta: {
+          title: 'Register | Speckle'
+        },
+        component: () => import('../views/auth/ResetPasswordFinalization.vue')
+      },
+      {
         path: 'verify/:appId/:challenge',
         name: 'Authorize App',
         meta: {
@@ -49,16 +65,16 @@ const routes = [
         meta: {
           title: 'Streams | Speckle'
         },
-        component: () => import('../views/Home.vue')
-      },
-      {
-        path: 'streams',
-        name: 'streams',
-        meta: {
-          title: 'Streams | Speckle'
-        },
         component: () => import('../views/Streams.vue')
       },
+      // {
+      //   path: 'streams',
+      //   name: 'streams',
+      //   meta: {
+      //     title: 'Streams | Speckle'
+      //   },
+      //   component: () => import('../views/Streams.vue')
+      // },
       {
         path: 'streams/:streamId',
         meta: {
@@ -75,12 +91,28 @@ const routes = [
             component: () => import('../views/StreamMain.vue')
           },
           {
+            path: 'branches/',
+            name: 'branchs',
+            meta: {
+              title: 'Branches | Speckle'
+            },
+            component: () => import('../views/Branches.vue')
+          },
+          {
             path: 'branches/:branchName',
             name: 'branch',
             meta: {
               title: 'Branch | Speckle'
             },
-            component: () => import('../views/Branch.vue')
+            component: () => import('../views/StreamMain.vue')
+          },
+          {
+            path: 'branches/:branchName/commits',
+            name: 'commits',
+            meta: {
+              title: 'Commits | Speckle'
+            },
+            component: () => import('../views/Commits.vue')
           },
           {
             path: 'commits/:commitId',
@@ -135,6 +167,14 @@ const routes = [
     component: () => import('../views/Error.vue')
   },
   {
+    path: '/onboarding',
+    name: 'Onboarding | Speckle',
+    meta: {
+      title: 'Getting Started | Speckle'
+    },
+    component: () => import('../views/GettingStartedView.vue')
+  },
+  {
     path: '*',
     name: 'notfound',
     meta: {
@@ -154,7 +194,14 @@ router.beforeEach((to, from, next) => {
   let uuid = localStorage.getItem('uuid')
   let redirect = localStorage.getItem('shouldRedirectTo')
 
-  if (!uuid && to.name !== 'Login' && to.name !== 'Register' && to.name !== 'Error') {
+  if (
+    !uuid &&
+    to.name !== 'Login' &&
+    to.name !== 'Register' &&
+    to.name !== 'Error' &&
+    to.name !== 'Reset Password' &&
+    to.name !== 'Reset Password Finalization'
+  ) {
     localStorage.setItem('shouldRedirectTo', to.path)
 
     return next({ name: 'Login' })

@@ -13,7 +13,7 @@
           <timeago :datetime="stream.createdAt"></timeago>
         </v-col>
       </v-row>
-      <v-card class="mb-3" elevation="0" rounded="lg" color="background2">
+      <v-card class="mb-3" elevation="0" rounded="lg">
         <v-row justify-center>
           <v-col cols="12">
             <v-card-title class="subtitle-2">
@@ -40,7 +40,7 @@
                   "
                   small
                 >
-                  mdi-history
+                  mdi-source-commit
                 </v-icon>
                 <span class="mr-2">{{ stream.commits.totalCount }}</span>
                 <v-icon

@@ -1,5 +1,5 @@
 <template>
-  <v-card color="background2" class="elevation-0 mt-3">
+  <v-card class="elevation-0 mt-3">
     <v-card-title>Personal Access Tokens</v-card-title>
     <v-card-text>
       Personal Access Tokens can be used to access the Speckle API on this server; they function
@@ -23,7 +23,7 @@
     <v-card-text v-else>You have no api tokens.</v-card-text>
     <v-card-text>
       <v-btn class="mb-5" @click="tokenDialog = true">new token</v-btn>
-      <v-dialog v-model="tokenDialog" persistent width="500">
+      <v-dialog v-model="tokenDialog" width="500">
         <token-dialog @token-added="refreshList" @close="tokenDialog = false" />
       </v-dialog>
     </v-card-text>

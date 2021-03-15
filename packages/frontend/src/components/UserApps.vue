@@ -1,5 +1,5 @@
 <template>
-  <v-card color="background2" class="elevation-0 mt-3 mb-5">
+  <v-card class="elevation-0 mt-3 mb-5">
     <v-card-title>Applications</v-card-title>
     <v-card-text>
       Register and manage third-party Speckle Apps that, once authorised by a user on this server,
@@ -15,7 +15,7 @@
     <v-card-text>
       <v-btn class="mb-5" @click="appDialog = true">new app</v-btn>
       <v-dialog v-model="appDialog" width="500">
-        <new-app-dialog @app-added="refreshList" @close="appDialog = false" />
+        <app-new-dialog @app-added="refreshList" @close="appDialog = false" />
       </v-dialog>
     </v-card-text>
   </v-card>
@@ -23,10 +23,10 @@
 <script>
 import gql from 'graphql-tag'
 import ListItemUserApp from './ListItemUserApp'
-import NewAppDialog from './dialogs/NewAppDialog'
+import AppNewDialog from './dialogs/AppNewDialog'
 
 export default {
-  components: { ListItemUserApp, NewAppDialog },
+  components: { ListItemUserApp, AppNewDialog },
   data() {
     return {
       appDialog: false

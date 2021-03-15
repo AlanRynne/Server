@@ -1,4 +1,5 @@
 module.exports = {
+  productionSourceMap: false,
   pages: {
     app: {
       entry: 'src/app.js',
