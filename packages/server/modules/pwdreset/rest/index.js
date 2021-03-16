@@ -80,7 +80,7 @@ This email was sent from ${serverInfo.name} at ${process.env.CANONICAL_URL}, dep
 </caption>
 `
 
-      await sendEmail( { to: user.email, subject:'Speckle Account Password Reset', text: emailText, html: emailHtml } )
+      await sendEmail( { from: 'alan@rynne.es', to: user.email, subject:'Speckle Account Password Reset', text: emailText, html: emailHtml } )
       return res.status( 200 ).send( 'Password reset email sent.' )
 
     } catch ( e ) {
